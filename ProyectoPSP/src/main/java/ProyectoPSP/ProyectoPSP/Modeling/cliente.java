@@ -28,8 +28,12 @@ public class cliente {
 			System.out.println(mensajeServidor);
 
 			while (flag) {
-				mensajeServidor = entrada.readLine();
-				System.out.println(mensajeServidor);
+				String linea;
+
+				while (!(linea = entrada.readLine()).equals("END")) {
+				    System.out.println(linea);
+				}
+				
 
 				mensajeUsuario = scanner.nextLine();
 				salida.println(mensajeUsuario);
@@ -37,7 +41,10 @@ public class cliente {
 				
 				
 				
-				if (mensajeUsuario.equalsIgnoreCase("Salir")) {
+				if (mensajeUsuario.equalsIgnoreCase("3")) {
+					while (!(linea = entrada.readLine()).equals("END")) {
+					    System.out.println(linea);
+					}
 					flag=false;
 					salida.close();
 					entrada.close();
@@ -47,7 +54,7 @@ public class cliente {
 				}
 				
 			}
-
+			System.out.println("Se ha desconectado de el servidor");
 			socket.close();
 
 		} catch (IOException e) {

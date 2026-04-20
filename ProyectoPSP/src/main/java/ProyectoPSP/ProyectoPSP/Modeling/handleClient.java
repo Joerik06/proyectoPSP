@@ -26,26 +26,27 @@ public class handleClient implements Runnable {
 			String opcion;
 
 			do {
-				salida.println(
-						"Elije entre estas opciones:"
-						+ "1. ");
+				salida.println("MENU");
+				salida.println("1. Denunciar");
+				salida.println("2. Información");
+				salida.println("3. Salir");
+				salida.println("END");
 
 				opcion = entrada.readLine();
 				System.out.println(opcion);
 
 				switch (opcion) {
 				case "1":
-					
+					salida.print("Has seleccionado denunciar una situación\n");
 					break;
 
 				case "2":
+					salida.print("Este sistema permite reportar situaciones de bullying de forma anónima.");
 					break;
 
 				case "3":
-					break;
-
-				case "salir":
 					salida.println("Desconectando...");
+					salida.println("END");
 					break;
 
 				default:
