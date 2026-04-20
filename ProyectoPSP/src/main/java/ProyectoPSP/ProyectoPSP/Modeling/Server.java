@@ -7,24 +7,22 @@ import java.net.Socket;
 
 public class Server {
 	public static void main(String[] args) {
-		int contador=1;
-		try {
-			ServerSocket server= new ServerSocket(2000);
-			System.out.println("Servidor iniciado..... esperando clientes");
-			while (contador<10) {
-				Socket sClient= server.accept();
-				server.setReuseAddress(true);
-				System.out.println("nuevo cliente conectado");
-				
-				new Thread(new handleClient(sClient)).start();
-			}
-			
-		server.close();
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+        try {
+            ServerSocket serverSocket = new ServerSocket(2000);
+            System.out.println("Servidor iniciado en el puerto 2000...");
+
+            while (true) {
+                Socket socket = serverSocket.accept();
+                System.out.println("Nuevo cliente conectado");
+
+                handleClient cliente = new handleClient(socket);
+                Thread hilo = new Thread(cliente);
+                hilo.start();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 }
